@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="streamer.css">
+</head>
+<body>
+    <div  id="login" class="login-box">
+        <span id="space1"></span> 
+        <h2>NATION CHEATS</h2>
+        <form action="">
+            <div class="user-box">
+                <span></span>
+                <span></span>
+                <span></span>
+                <input type="text" id="keyinp" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <span id="space1"></span>
+            <div class="user-box">
+                <span></span>
+                <span></span>
+                <span></span>
+                <input type="password" id="pssinp" placeholder="Password" required>
+                
+            </div>
+            <span id="space1"></span>
+            <div class="chbx-div">
+            <input id="lg-rm-chkbx" type="checkbox">
+            <span>Save Me !!</span>
+            </div>
+            <a id="lgnbtn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>Submit
+            </a>
+        </form>
+    </div>
+
+</body>
+    <div id="mainpg">
+        </dev>
+    
+        <div class="features">
+            <h3>Aimbot</h3>
+            <button id="amb-en" class="enable-btn">Enable</button>
+            <button id="amb-ds" class="disable-btn">Disable</button>
+        </div>
+        <div class="features">
+            <h3>Location</h3>
+            <button id="lc-en" class="enable-btn">Enable</button>
+            <button id="lc-ds" class="disable-btn">Disable</button>
+        </div>
+        <div class="features">
+            <h3>Sniper Scope Aimbot</h3>
+            <button id="ssc-en" class="enable-btn">Enable</button>
+            <button id="ssc-ds" class="disable-btn">Disable</button>
+        </div>
+        <div class="features">
+            <h3>Sniper Scope Tracking</h3>
+            <button id="sst-en" class="enable-btn">Enable</button>
+            <button id="sst-ds" class="disable-btn">Disable</button>
+        </div>
+        <div class="features">
+            <h3>Sniper Fast Switch</h3>
+            <button id="sw-en" class="enable-btn">Enable</button>
+            <button id="sw-ds" class="disable-btn">Disable</button>
+        </div>
+        <div class="features">
+            <h3>Fix Fake Damage</h3>
+            <button class="enable-btn" id="mbinjbtn">Enable</button>
+            <button id="mb-ds" class="disable-btn">Disable</button>
+        </div>
+        <div class="features">
+            <h3>Stream mode</h3>
+            <button id="stm-en" class="enable-btn">Enable</button>
+            <button id="stm-ds" class="disable-btn">Disable</button>
+        </div>
+        <div class="features">
+            <h3>Block/Unblock Internet</h3>
+            <button id="int-en" class="enable-btn">Enable</button>
+            <button id="int-ds" class="disable-btn">Disable</button>
+        </div>
+        <h6>Console</h6>
+        <div id="console">
+        </div>
+    </div>
+
+
+<script>
+  document.getElementById("amb-en").addEventListener("click", () => {
+    // Play beep sound
+    const audio = new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAAA=');
+    audio.play();
+    // Create a beep sound using the Beep API (only works in modern browsers)
+    navigator.mediaSession.playbackState = 'playing';
+    const context = new AudioContext();
+    const oscillator = context.createOscillator();
+    oscillator.type = 'square';
+    oscillator.frequency.setValueAtTime(200, context.currentTime); // Hz
+    oscillator.connect(context.destination);
+    oscillator.start();
+    setTimeout(() => {
+      oscillator.stop();
+    }, 200); // Stop the beep after 200ms
+  });
+</script>
+
+
+<script>
+  document.getElementById("lgnbtn").addEventListener("click", () => {
+document.getElementById('login').style.display = "none";
+          document.getElementById('mainpg').style.display = "flex";
+  });
+</script>
+
+
+<script>
+  document.getElementById("lc-en").addEventListener("click", () => {
+    const emulator = "C:\\Program Files\\BlueStacks_nxt\\HD-Player.exe";
+    print(emulator);
+  });
+</script>
+
+
+
+
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+import {
+  getDatabase,
+  ref, 
+  child,
+  get,
+  onValue,
+  set
+} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+
+const firebaseConfig1 = {
+apiKey: "AIzaSyDUFmq8EmRi5XA1flCXH6a2op-U4M-KRU0",
+authDomain: "moro-f539c.firebaseapp.com",
+projectId: "moro-f539c",
+storageBucket: "moro-f539c.appspot.com",
+messagingSenderId: "57186347755",
+appId: "1:57186347755:web:0107ce752c46098dc7ecae",
+measurementId: "G-2JB623H6WN"
+
+};
+const app1 = initializeApp(firebaseConfig1);
+const db = getDatabase(app1);
+let hwid;
+
+document.getElementById("lgnbtn").addEventListener('click',checkData);
+const msg = document.getElementById('msg');
+
+const idinput = document.getElementById("keyinp");
+const pssinput = document.getElementById("pssinp");
+
+const cons = document.getElementById("console");
+
+const swbtn = document.getElementById("sw-en");
+const sscbtn = document.getElementById("ssc-en");
+const sstbtn = document.getElementById("sst-en");
+const intbtn = document.getElementById("int-en");
+const lcn = document.getElementById("lc-en");
+const ambtbtn = document.getElementById("amb-en");
+const stm = document.getElementById("stm-en");
+const mbbtn = document.getElementById("mbinjbtn");
+
+const swbtnds = document.getElementById("sw-ds");
+const sscbtnds = document.getElementById("ssc-ds");
+const sstbtnds = document.getElementById("sst-ds");
+const intbtnds = document.getElementById("int-ds");
+const lcnds = document.getElementById("lc-ds");
+const ambtbtnds = document.getElementById("amb-ds");
+const stmds = document.getElementById("stm-ds");
+const mbbtnds = document.getElementById("mb-ds");
+
+const ID =localStorage.getItem('lgn-id');
+const PSS = localStorage.getItem('lgn-pss');
+
+if(ID && PSS != ""){
+  idinput.value = ID;
+  pssinput.value = PSS;
+}else{
+  idinput.value = "";
+  pssinput.value = "";
+}
+
+function gettime() {
+var now = new Date();
+
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds();
+
+var timeString = hours.toString().padStart(2, '0') + ':' + 
+               minutes.toString().padStart(2, '0') + ':' + 
+               seconds.toString().padStart(2, '0');
+
+return timeString;
+}
+
+function updtCons(msg){
+  const time = gettime();
+  cons.innerHTML +=  `<label>${time} : ${msg}</label>`
+}
+
+function checkData(){
+  const dbRef = ref(db);
+  let id = idinput.value;
+  let pss = pssinput.value;
+
+    get(child(dbRef, "User/" + id)).then((snapshot) => {
+      if (snapshot.exists()) {
+        const Userdata = {
+          hwid: snapshot.val().hwid,
+        };
+        console.log(Userdata.hwid);
+        get(child(dbRef, "Accounts/" + Userdata.hwid)).then((snapshot) => {
+      if (snapshot.exists()) {
+        const Userdata2 = {
+          pss: snapshot.val().pass,
+        };
+        console.log(Userdata2.pss);
+        if(Userdata2.pss == pss)
+{
+          hwid = Userdata.hwid;
+          document.getElementById('login').style.display = "none";
+          document.getElementById('mainpg').style.display = "flex";
+          resetData();
+          const checkbox = document.getElementById("lg-rm-chkbx");
+          var isChecked = checkbox.checked;
+          if(isChecked){
+            localStorage.setItem('lgn-id',id);
+            localStorage.setItem('lgn-pss',pss);
+          }
+else
+{
+            localStorage.setItem('lgn-id',"");
+            localStorage.setItem('lgn-pss',"");
+          }
+          
+  const msgRef = ref(db, `Accounts/${hwid}/msg`);
+
+    onValue(msgRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const newValue = snapshot.val();
+        if(newValue != ""){
+          updtCons(newValue);
+          scrollToBottom();
+        }
+      }
+    });
+        }else{
+          msg.textContent = "Wrong Password";
+        }
+
+
+      }else{
+          msg.textContent = "User Not Found(ahwid)";
+      }
+    });
+
+
+      }else{
+          msg.textContent = "User Not Found(ml)";
+      }
+    });
+  };
+  function scrollToBottom() {
+  cons.scrollTop = cons.scrollHeight;
+}
+
+
+ 
+
+  mbbtn.addEventListener("click",()=>btnclicked("1","magicbullet"));
+  ambtbtn.addEventListener("click",()=>btnclicked("1","aimbot"));
+  sscbtn.addEventListener("click",()=>btnclicked("1","awmS"));
+  sstbtn.addEventListener("click",()=>btnclicked("1","awmSp"));
+  swbtn.addEventListener("click",()=>btnclicked("1","awmSw"));
+  lcn.addEventListener("click",()=>btnclicked("1","location"));
+  stm.addEventListener("click",()=>btnclicked("1","stm"));
+  intbtn.addEventListener("click",()=>btnclicked("1","internet"));
+
+  mbbtnds.addEventListener("click",()=>btnclicked("2","magicbullet"));
+  ambtbtnds.addEventListener("click",()=>btnclicked("2","aimbot"));
+  sscbtnds.addEventListener("click",()=>btnclicked("2","awmS"));
+  sstbtnds.addEventListener("click",()=>btnclicked("2","awmSp"));
+  swbtnds.addEventListener("click",()=>btnclicked("2","awmSw"));
+  lcnds.addEventListener("click",()=>btnclicked("2","location"));
+  stmds.addEventListener("click",()=>btnclicked("2","stm"));
+  intbtnds.addEventListener("click",()=>btnclicked("2","internet"));
+
+
+
+
+
+  function btnclicked(value,lcn){
+    console.log("clicked");
+    let mbRef =  ref(db, `Accounts/${hwid}/controls/${lcn}`);
+
+    set(mbRef, value)
+    .then(() => {
+      console.log(`${lcn} new code: ${value}`);
+    });
+
+  }
+
+  function resetData(){
+    let mbRef =  ref(db, `Accounts/${hwid}/controls/`);
+    const dts = {
+      aimbot : "3",
+      location : "3",
+      internet : "3",
+      awmS : "3",
+      awmSw : "3",
+      awmSp : "3",
+      magicbullet : "3",
+      stm : "3",
+    }
+    set(mbRef, dts)
+    .then(() => {
+    });
+
+    let mbRef2 =  ref(db, `Accounts/${hwid}/msg`);
+    
+    set(mbRef2, "")
+    .then(() => {
+    });
+
+  }
+    </script>
+</body>
+</html>

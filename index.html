@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NATION CHEATS</title>
   <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+  <link href="streamer.css" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.auth0.com/js/auth0/9.18/auth0.min.js"></script>
 </head>
@@ -24,36 +26,33 @@
         <span>or use your account</span>
         <div class="social-container">
           <a href="#" class="social"><i class="lni lni-google"></i></a>
-          <a href="#" class="social"><i class="lni lni-discord"></i></a>
+          <a href="window.location.href= 'https://discord.com/oauth2/authorize?client_id=1289243253123846175&response_type=code&redirect_uri=http%3A%2F%2F89.168.62.240%3A10006%2Fcallback&scope=identify+guilds.join+guilds+email+guilds.members.read'" class="social"><i class="lni lni-discord"></i></a>
           <a href="#" class="social"><i class="lni lni-facebook-fill"></i></a>
         </div>
       </form>
     </div>
 
     <div class="form-container login-container">
-      <form id="loginForm">
-        <h1>Login</h1>
-        <input type="email" placeholder="Email" id="loginEmail">
-        <input type="password" placeholder="Password" id="loginPassword">
-        <div class="content">
-          <div class="checkbox">
-            <input type="checkbox" name="checkbox" id="checkbox">
-            <label>Remember me</label>
+      <form id="loginForm" onsubmit="return false;"> <!-- Prevent form submission -->
+          <h1>Login</h1>
+          <input type="email" placeholder="Email" id="loginEmail" required>
+          <input type="password" placeholder="Password" id="loginPassword" required>
+          <div class="content">
+              <div class="checkbox">
+                  <input type="checkbox" name="checkbox" id="checkbox">
+                  <label>Remember me</label>
+              </div>
+              <div class="pass-link">
+                  <a href="#">Forgot password?</a>
+              </div>
           </div>
-          <div class="pass-link">
-            <a href="#">Forgot password?</a>
-          </div>
-        </div>
-        <button type="button" id="loginButton">Login</button>
+          <button type="button" id="loginButton">Login</button>
+
         <span>or use your account</span>
         <div class="social-container">
-          <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=1289243253123846175&redirect_uri=http%3A%2F%2F89.168.62.240%3A10006%2Fcallback&response_type=code&scope=identify+guilds.join+guilds+email+guilds.members.read profile" class="social" target="_blank">
-          <i class="lni lni-google"></i></a>           
-          <a href="https://discord.com/oauth2/authorize?client_id=1289243253123846175&response_type=code&redirect_uri=http%3A%2F%2F89.168.62.240%3A10006%2Fcallback&scope=identify+guilds.join+guilds+email+guilds.members.read" class="social" target="_blank"><i class="lni lni-discord"></i></a>           
-          <div class="social-container">
-    <a href="https://github.com/login/oauth/authorize?client_id=Ov23liFvUMwFDweSZSvn&redirect_uri=http%3A%2F%2F89.168.62.240%3A10006%2Fcallback&scope=read:user,user:email" class="social" target="_blank">
-        <i class="lni lni-github"></i></a>
-        </div>
+          <a href="https://google.com/oauth2/authorize?client_id=1289243253123846175&response_type=code&redirect_uri=http%3A%2F%2F89.168.62.240%3A10006%2Fcallback&scope=identify+guilds.join+guilds+email+guilds.members.read" class="social"><i class="lni lni-google"></i></a>
+          <a href="https://discord.com/oauth2/authorize?client_id=1289243253123846175&response_type=code&redirect_uri=http%3A%2F%2F89.168.62.240%3A10006%2Fcallback&scope=identify+guilds.join+guilds+email+guilds.members.read" class="social"><i class="lni lni-discord"></i></a>
+          <a href="https://github.com/oauth2/authorize?client_id=1289243253123846175&response_type=code&redirect_uri=http%3A%2F%2F89.168.62.240%3A10006%2Fcallback&scope=identify+guilds.join+guilds+email+guilds.members.read" class="social"><i class="lni lni-github"></i></a>
         </div>
       </form>
     </div>
@@ -83,6 +82,15 @@
   <script src="auth.js"></script>
 </body>
 </html>
+
+
+<!-- Scipt -->
+<script>
+  document.getElementById('loginButton').addEventListener('click', function() {
+      // You can add validation here if needed
+      window.location.href = 'main.html';
+  });
+</script> 
 
 <!-- Shooting Stars -->
 <!DOCTYPE html>
