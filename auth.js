@@ -11,7 +11,7 @@ loginButton.addEventListener('click', (e) => {
 
   if (email === 'gamerzmgrgm@gmail.com' && password === 'reflexx_44') {
     // Login successful, redirect to index.html
-    window.location.href = 'index.html';
+    window.location.href = 'dashboard/main.html';
   } else {
     // Login failed, show error message
     alert('Invalid email or password');
