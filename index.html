@@ -11,14 +11,13 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.auth0.com/js/auth0/9.18/auth0.min.js"></script>
 </head>
-
-<h1>NATION CHEATS !!</h1>
-
 <body>
+
+  <h1>NATION CHEATS !!</h1>
   <div class="container" id="container">
     <div class="form-container register-container">
       <form id="registerForm">
-       <h1>Register</h1>
+        <h1>Register</h1>
         <input type="text" placeholder="Name" id="registerName">
         <input type="email" placeholder="Email" id="registerEmail">
         <input type="password" placeholder="Password" id="registerPassword">
@@ -32,7 +31,6 @@
       </form>
     </div>
 
-    <div class="container" id="container">
     <div class="form-container login-container">
       <form id="loginForm">
         <h1>Login</h1>
@@ -41,18 +39,13 @@
         <div class="content">
           <div class="checkbox">
             <input type="checkbox" name="checkbox" id="checkbox">
-            <label>Remember me</label>
+            <label for="checkbox">Remember me</label>
           </div>
           <div class="pass-link">
             <a href="#">Forgot password?</a>
           </div>
         </div>
         <button type="button" id="loginButton">Login</button>
-      </form>
-    </div>
-
-    <script src="auth.js"></script>
-    
         <span>or use your account</span>
         <div class="social-container">
           <a href="https://accounts.google.com/o/oauth2/authorize?client_id=304876666952-k7labjgfk85o1hsog9t1qa5ie7tunb9t.apps.googleusercontent.com" class="social"><i class="lni lni-google"></i></a>
@@ -62,9 +55,6 @@
       </form>
     </div>
 
-    
-
-    
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
@@ -77,16 +67,10 @@
         <div class="overlay-panel overlay-right">
           <h1 class="title">Welcome <br> Back !!</h1>
           <p>Thanks For Join Us. Unleash the Fun.</p>
-          <!-- <button class="ghost" id="register">Register
-            <i class="lni lni-arrow-right register"></i>
-          </button> -->
         </div>
       </div>
     </div>
   </div>
-</body>
-</html>
-
 
 <body>
 <!-- partial:index.partial.html -->
@@ -144,5 +128,7 @@
 </div>
 <!-- partial -->
   
+
+<script src="auth.js"></script>
 </body>
 </html>
