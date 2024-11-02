@@ -26,37 +26,41 @@
         <span>or use your account</span>
         <div class="social-container">
           <a href="#" class="social"><i class="lni lni-google"></i></a>
-          <a href="window.location.href= 'https://discord.com/oauth2/authorize?client_id=1289243253123846175&response_type=code&redirect_uri=http%3A%2F%2F89.168.62.240%3A10006%2Fcallback&scope=identify+guilds.join+guilds+email+guilds.members.read'" class="social"><i class="lni lni-discord"></i></a>
+          <a href="#" class="social"><i class="lni lni-discord"></i></a>
           <a href="#" class="social"><i class="lni lni-facebook-fill"></i></a>
         </div>
       </form>
     </div>
 
+    <div class="container" id="container">
     <div class="form-container login-container">
-      <form id="loginForm" onsubmit="return false;"> <!-- Prevent form submission -->
-          <h1>Login</h1>
-          <input type="email" placeholder="Email" id="loginEmail" required>
-          <input type="password" placeholder="Password" id="loginPassword" required>
-          <div class="content">
-              <div class="checkbox">
-                  <input type="checkbox" name="checkbox" id="checkbox">
-                  <label>Remember me</label>
-              </div>
-              <div class="pass-link">
-                  <a href="#">Forgot password?</a>
-              </div>
+      <form id="loginForm">
+        <h1>Login</h1>
+        <input type="email" placeholder="Email" id="loginEmail" required>
+        <input type="password" placeholder="Password" id="loginPassword" required>
+        <div class="content">
+          <div class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox">
+            <label>Remember me</label>
           </div>
-          <button type="button" id="loginButton">Login</button>
-
+          <div class="pass-link">
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+        <button type="button" id="loginButton">Login</button>
+      </form>
+    </div>
+    
         <span>or use your account</span>
         <div class="social-container">
-          <a href="https://google.com/oauth2/authorize?client_id=304876666952-k7labjgfk85o1hsog9t1qa5ie7tunb9t.apps.googleusercontent.com" class="social"><i class="lni lni-google"></i></a>
+          <a href="https://accounts.google.com/o/oauth2/authorize?client_id=304876666952-k7labjgfk85o1hsog9t1qa5ie7tunb9t.apps.googleusercontent.com" class="social"><i class="lni lni-google"></i></a>
           <a href="https://discord.com/oauth2/authorize?client_id=1301424626676797461&response_type=code&redirect_uri=https%3A%2F%2Fgamerzmgr.github.io%2Fnationcheats%2Fdashboard%2Fmain.html&scope=identify+guilds+email+guilds.join+guilds.members.read" class="social"><i class="lni lni-discord"></i></a>
           <a href="https://github.com/login/oauth/authorize?client_id=Ov23liFvUMwFDweSZSvn" class="social"><i class="lni lni-github"></i></a>
         </div>
       </form>
     </div>
 
+    <script src="auth.js"></script>
 
     
     <div class="overlay-container">
@@ -88,19 +92,11 @@
 <script>
   document.getElementById('loginButton').addEventListener('click', function() {
       // You can add validation here if needed
-      window.location.href = 'main.html';
+      window.location.href = 'dashboard/main.html';
   });
 </script> 
 
-<!-- Shooting Stars -->
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - Shooting Star</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/alphardex/aqua.css@master/dist/aqua.min.css'><link rel="stylesheet" href="./style.css">
 
-</head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="stars">
