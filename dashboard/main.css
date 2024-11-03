@@ -24,8 +24,9 @@ body {
 
 .custom-dropdown-menu .dropdown-item:hover {
   background-color: #333333; /* Optional: Hover color for dropdown items */
-  color: #4bb6b7 !important;
+  color: #ffffff !important; /* Set text color to white on hover */
 }
+
 
 .layout_padding2-top {
   padding-top: 75px;
