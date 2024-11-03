@@ -19,13 +19,13 @@ body {
 }
 
 .custom-dropdown-menu .dropdown-item {
-  color: #4bb6b7 !important;
+  color: #ffffff !important;
 }
 
 .custom-dropdown-menu .dropdown-item:hover {
-  background-color: #333333; /* Optional: Hover color for dropdown items */
-  /* Remove color property so text stays #4bb6b7 on hover */
+  color: #4bb6b7 !important; /* Set text color to white on hover */
 }
+
 
 
 .layout_padding2-top {
