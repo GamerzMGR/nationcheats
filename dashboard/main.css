@@ -13,6 +13,19 @@ body {
 .layout_padding2 {
   padding: 75px 0;
 }
+/* Custom dropdown background and text color */
+.custom-dropdown-menu {
+  background-color: #212121 !important;
+}
+
+.custom-dropdown-menu .dropdown-item {
+  color: #4bb6b7 !important;
+}
+
+.custom-dropdown-menu .dropdown-item:hover {
+  background-color: #333333; /* Optional: Hover color for dropdown items */
+  color: #4bb6b7 !important;
+}
 
 .layout_padding2-top {
   padding-top: 75px;
