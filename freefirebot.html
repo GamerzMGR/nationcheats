@@ -9,10 +9,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: "Poppins", sans-serif;
         }
         body {
-            background-color: #121212;
+            background-color: #0a0a0a;
             color: white;
             display: flex;
             flex-direction: column;
@@ -22,36 +22,97 @@
             text-align: center;
         }
         .title {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
             background: linear-gradient(45deg, #ff416c, #ff4b2b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .input-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+            border: 2px solid #ff416c;
+            border-radius: 5px;
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #ff416c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ff4b2b;
         }
         .result-box {
             width: 80%;
+            max-width: 800px;
             min-height: 200px;
-            background-color: #1e1e1e;
-            border-radius: 8px;
-            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 15px;
             text-align: left;
             overflow-y: auto;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 0px 15px rgba(255, 65, 108, 0.5);
+            border: 2px solid rgba(255, 65, 108, 0.8);
+            font-size: 14px;
         }
         .loading {
-            font-size: 16px;
+            font-size: 18px;
             color: #ff416c;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="title">NATION CHEATS</div>
+
+    <!-- UID Input and Button -->
+    <div class="input-box">
+        <input type="text" id="uidInput" placeholder="Enter UID" />
+        <button onclick="fetchData()">Check</button>
+    </div>
+
+    <!-- Result Box -->
     <div class="result-box">
-        <p class="loading">Loading result...</p>
-            <iframe src="https://tools.freefireinfo.in/like.php"></iframe>
-            </div>
+        <p class="loading">Enter UID and click Check</p>
+    </div>
+
+    <script>
+        async function fetchData() {
+            let uid = document.getElementById("uidInput").value.trim();
+            if (uid === "") {
+                document.querySelector(".result-box").innerHTML = `<p style="color: yellow;">Please enter a UID!</p>`;
+                return;
+            }
+
+            try {
+                document.querySelector(".result-box").innerHTML = `<p class="loading">Fetching data...</p>`;
+
+                let response = await fetch(`https://tools.freefireinfo.in/like.php?uid=${uid}`);
+                let data = await response.text();
+
+                document.querySelector(".result-box").innerHTML = `<pre>${data}</pre>`;
+            } catch (error) {
+                document.querySelector(".result-box").innerHTML = `<p style="color: red;">Error fetching data!</p>`;
+            }
+        }
+    </script>
 </body>
 </html>
