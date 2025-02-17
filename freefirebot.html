@@ -3,80 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NATION FF BOT</title>
+    <title>Free Fire Accoount Info</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+            --bg-color: #f0f2f5;
+            --border-radius: 8px;
+        }
+
         * {
             margin: 0;
             padding: 0;
-            border: 0;
             box-sizing: border-box;
         }
-        html, body {
-            width: 100%;
-            height: 100%;
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0; /* Light white background */
-            color: #333; /* Dark text color */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
         }
+
         h1 {
             text-align: center;
-            font-size: 3.5rem;
-            color: #222; /* Darker text color for main title */
-            font-weight: bold;
-            margin-top: 50px;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        h2 {
-            text-align: center;
-            font-size: 2rem;
-            color: #555; /* Lighter text color for sub-title */
-            margin-top: -15px;
-            font-weight: normal;
+
+        .form-group {
+            margin-bottom: 20px;
         }
-        iframe {
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        input, select {
             width: 100%;
-            height: 80vh;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
+            box-sizing: border-box;
+            height: 45px;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            margin-top: 30px;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            height: 45px;
         }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            padding: 30px 0;
-            background-color: #fff; /* White background for the footer */
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .social-icons a {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background-color: #e0e0e0; /* Light grey buttons */
-            border-radius: 50%;
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            white-space: pre-line;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .error {
+            color: var(--error-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--error-color);
+            margin-top: 20px;
+        }
+
+        .loading {
+            display: none;
             text-align: center;
-            line-height: 60px;
-            color: #333;
-            font-size: 1.6rem;
-            text-decoration: none;
-            transition: all 0.3s ease-in-out;
+            margin-top: 20px;
         }
-        .social-icons a:hover {
-            background-color: #ccc; /* Slightly darker on hover */
-            transform: scale(1.1); /* Slight scale effect */
+
+        .loading.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .result {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+            padding-right: 2.5rem;
+        }
+
+        .navigation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+        .navigation a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+
+        /* Updated equipped items styling */
+        .equipped-items {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--primary-color); /* This line will add the blue side */
+}
+
+        .equipped-items h3 {
+            margin: 0 0 15px 0;
+            color: var(--secondary-color);
+            text-align: left;
+            font-size: 1.5em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .equipped-items h4 {
+            margin: 20px 0 15px 0;
+            color: var(--secondary-color);
+            text-align: left;
+            font-size: 1.2em;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .equipped-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .equipped-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .equipped-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .equipped-item img {
+            width: auto;
+            height: auto;
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .equipped-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .equipped-item p {
+    margin: 10px 0 0 0;
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .equipped-item img {
+                max-width: 150px;
+                max-height: 150px;
+            }
+
+            .equipped-item p {
+                font-size: 1em;
+            }
+
+            .equipped-items-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body>
-
+<body> 
     <h1>NATION CHEATS</h1>
-    <iframe src="https://tools.freefireinfo.in/like.php" allowfullscreen></iframe>
+    <form method="POST" id="likeForm">
+        <div class="form-group">
+            <label for="uid">Enter UID:</label>
+            <input type="text" name="uid" id="uid" value="" required 
+                   placeholder="Enter your Free Fire UID">
+        </div>
+        
+        <button type="submit">Get Account Info</button>
+    </form>
 
-    <div class="social-icons">
-        <a href="https://discord.gg/uDGNmeJpxB" target="_blank" title="Join our Discord">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Discord_logo.svg" alt="Discord" width="30" height="30">
-        </a>
-        <a href="https://www.instagram.com/0x_shreepal/" target="_blank" title="Follow us on Instagram">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" width="30" height="30">
-        </a>
+    <div id="loading" class="loading">
+        Fetching account information...
     </div>
 
+    
+    
+    <script>
+        document.getElementById('likeForm').addEventListener('submit', function() {
+            document.getElementById('loading').classList.add('active');
+        });
+    </script>
+    <div class="navigation">
+    <a href="https://tools.freefireinfo.in/wishlist.php">← Get Wishlist Info</a>
+    <a href="https://tools.freefireinfo.in/like.php">Claim Free Like →</a>
+</div>
 </body>
 </html>
