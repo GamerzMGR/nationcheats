@@ -51,21 +51,7 @@
     <div class="title">NATION CHEATS</div>
     <div class="result-box">
         <p class="loading">Loading result...</p>
-    </div>
-
-    <script>
-        async function fetchData() {
-            try {
-                let response = await fetch("https://tools.freefireinfo.in/like.php");
-                let data = await response.text();
-                
-                document.querySelector(".result-box").innerHTML = `<pre>${data}</pre>`;
-            } catch (error) {
-                document.querySelector(".result-box").innerHTML = `<p style="color: red;">Error fetching data!</p>`;
-            }
-        }
-        
-        fetchData();
-    </script>
+            <iframe src="https://tools.freefireinfo.in/like.php"></iframe>
+            </div>
 </body>
 </html>
