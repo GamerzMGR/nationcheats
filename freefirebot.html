@@ -1,11 +1,15 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Fire Accoount Info</title>
+    <title>Free Fire Like Sender</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
+        /* Keep existing CSS exactly the same */
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
@@ -15,15 +19,9 @@
             --border-radius: 8px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            max-width: 800px;
+            max-width: 400px;
             margin: 0 auto;
             padding: 20px;
             background-color: var(--bg-color);
@@ -150,11 +148,11 @@
         }
 
         .navigation {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
         .navigation a {
             text-decoration: none;
@@ -166,101 +164,14 @@
             text-decoration: underline;
         }
 
-        /* Updated equipped items styling */
-        .equipped-items {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-left: 4px solid var(--primary-color); /* This line will add the blue side */
-}
-
-        .equipped-items h3 {
-            margin: 0 0 15px 0;
-            color: var(--secondary-color);
-            text-align: left;
-            font-size: 1.5em;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-        }
-
-        .equipped-items h4 {
-            margin: 20px 0 15px 0;
-            color: var(--secondary-color);
-            text-align: left;
-            font-size: 1.2em;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .equipped-items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 10px;
-        }
-
-        .equipped-item {
+        .cf-turnstile {
+            margin: 20px 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .equipped-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .equipped-item img {
-            width: auto;
-            height: auto;
-            max-width: 200px;
-            max-height: 200px;
-            object-fit: contain;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            transition: transform 0.3s ease;
-        }
-
-        .equipped-item img:hover {
-            transform: scale(1.05);
-        }
-
-        .equipped-item p {
-    margin: 10px 0 0 0;
-    color: var(--secondary-color);
-    font-weight: 500;
-    font-size: 1.1em;
-    text-align: center;
-}
-
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-
-            .equipped-item img {
-                max-width: 150px;
-                max-height: 150px;
-            }
-
-            .equipped-item p {
-                font-size: 1em;
-            }
-
-            .equipped-items-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
-<body> 
+<body>
     <h1>NATION CHEATS</h1>
     <form method="POST" id="likeForm">
         <div class="form-group">
@@ -269,11 +180,14 @@
                    placeholder="Enter your Free Fire UID">
         </div>
         
-        <button type="submit">Get Account Info</button>
+        <!-- Cloudflare Turnstile widget -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAA8ggmEdIYxnApVK"></div>
+        
+        <button type="submit">Claim Free Likes</button>
     </form>
 
     <div id="loading" class="loading">
-        Fetching account information...
+        Trying to send likes...
     </div>
 
     
@@ -283,9 +197,10 @@
             document.getElementById('loading').classList.add('active');
         });
     </script>
+
     <div class="navigation">
-    <a href="https://tools.freefireinfo.in/wishlist.php">← Get Wishlist Info</a>
-    <a href="https://tools.freefireinfo.in/like.php">Claim Free Like →</a>
-</div>
+        <a href="https://tools.freefireinfo.in/profileinfo.php">← Get Account Info</a>
+        <a href="https://tools.freefireinfo.in/history.php">Check History →</a>
+    </div>
 </body>
 </html>
