@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
             color: white;
             text-align: center;
             padding: 20px;
@@ -22,28 +22,32 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
             margin: auto;
             backdrop-filter: blur(10px);
             transform: translateY(-20px);
-            animation: slideIn 1s forwards;
+            animation: slideIn 1s forwards, glowEffect 2s infinite alternate;
         }
         @keyframes slideIn {
             from { transform: translateY(-20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        @keyframes glowEffect {
+            from { box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+            to { box-shadow: 0 0 30px rgba(0, 255, 255, 1); }
+        }
         h2 {
             font-size: 24px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            background: linear-gradient(90deg, #ff8c00, #ffd700);
+            background: linear-gradient(90deg, #00ff99, #00ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: glow 1.5s infinite alternate;
+            animation: glowText 1.5s infinite alternate;
         }
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #ffd700; }
-            to { text-shadow: 0 0 20px #ff8c00; }
+        @keyframes glowText {
+            from { text-shadow: 0 0 10px #00ffff; }
+            to { text-shadow: 0 0 20px #00ff99; }
         }
         input, button {
             margin: 10px 0;
@@ -63,14 +67,16 @@
             color: #ddd;
         }
         button {
-            background: linear-gradient(90deg, #ff4500, #ff8c00);
+            background: linear-gradient(90deg, #00ff99, #00ffff);
             color: white;
             cursor: pointer;
             font-weight: bold;
+            transition: 0.3s;
         }
         button:hover {
-            background: linear-gradient(90deg, #ff8c00, #ff4500);
+            background: linear-gradient(90deg, #00ffff, #00ff99);
             transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 1);
         }
         #response {
             text-align: left;
