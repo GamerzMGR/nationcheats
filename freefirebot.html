@@ -3,146 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nation Cheats</title>
+    <title>Free Fire API Explorer</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
         body {
-            background-color: #0a0a0a;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             text-align: center;
+            padding: 20px;
         }
-        .title {
-            font-size: 42px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
-        }
-        .input-box {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        input, select {
-            padding: 15px;
-            font-size: 18px;
-            border: 3px solid #ff416c;
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
             border-radius: 8px;
-            background-color: #1e1e1e;
-            color: white;
-            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
         }
-        button {
-            padding: 15px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            background: #ff416c;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        button:hover {
-            background: #ff4b2b;
-        }
-        .result-box {
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
             width: 90%;
-            max-width: 1000px;
-            height: 350px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: left;
-            overflow-y: auto;
-            box-shadow: 0px 0px 20px rgba(255, 65, 108, 0.5);
-            border: 3px solid rgba(255, 65, 108, 0.8);
-            font-size: 16px;
         }
-        .loading {
-            font-size: 20px;
-            color: #ff416c;
-            font-weight: bold;
+        #response {
+            text-align: left;
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
         }
     </style>
 </head>
 <body>
-    <div class="title">NATION CHEATS</div>
-
-    <div class="input-box">
-        <input type="text" id="uidInput" placeholder="Enter UID" />
-        <select id="regionSelect">
-            <option value="IND">IND</option>
-            <option value="BR">BR</option>
-            <option value="SG">SG</option>
-            <option value="RU">RU</option>
-            <option value="ID">ID</option>
-            <option value="TW">TW</option>
-            <option value="US">US</option>
-            <option value="VN">VN</option>
-            <option value="TH">TH</option>
-            <option value="ME">ME</option>
-            <option value="PK">PK</option>
-            <option value="CIS">CIS</option>
-            <option value="BD">BD</option>
-        </select>
-        <button onclick="fetchData()">Check</button>
-    </div>
-
-    <div class="result-box">
-        <p class="loading">Enter UID and click Check</p>
+    <div class="container">
+        <h2>Free Fire API Explorer</h2>
+        <input type="text" id="userId" placeholder="Enter Free Fire User ID">
+        <button onclick="fetchData()">Get Account Info</button>
+        <button onclick="fetchCraftland()">Get Craftland Profile</button>
+        <button onclick="fetchMap()">Get Craftland Map</button>
+        <h3>Response:</h3>
+        <div id="response"></div>
     </div>
 
     <script>
         async function fetchData() {
-            let uid = document.getElementById("uidInput").value.trim();
-            let region = document.getElementById("regionSelect").value;
-            if (uid === "") {
-                document.querySelector(".result-box").innerHTML = `<p style="color: yellow;">Please enter a UID!</p>`;
-                return;
-            }
+            const userId = document.getElementById('userId').value;
+            const response = await fetch(`https://api.example.com/freefire/user/${userId}`);
+            const data = await response.json();
+            document.getElementById('response').innerText = JSON.stringify(data, null, 2);
+        }
 
-            document.querySelector(".result-box").innerHTML = `<p class="loading">Fetching data...</p>`;
+        async function fetchCraftland() {
+            const userId = document.getElementById('userId').value;
+            const response = await fetch(`https://api.example.com/freefire/craftland/${userId}`);
+            const data = await response.json();
+            document.getElementById('response').innerText = JSON.stringify(data, null, 2);
+        }
 
-            let apiUrl = `https://free-ff-api-src-5plp.onrender.com/api/v1/account?region=${region}&uid=${uid}`;
-            
-            try {
-                let response = await fetch(apiUrl);
-                let data = await response.json();
-                
-                if (data.basicInfo) {
-                    let resultHTML = `
-                        <p><strong>UID:</strong> ${data.basicInfo.accountId}</p>
-                        <p><strong>Nickname:</strong> ${data.basicInfo.nickname}</p>
-                        <p><strong>Region:</strong> ${data.basicInfo.region}</p>
-                        <p><strong>Level:</strong> ${data.basicInfo.level}</p>
-                        <p><strong>EXP:</strong> ${data.basicInfo.exp}</p>
-                        <p><strong>Rank:</strong> ${data.basicInfo.rank}</p>
-                        <p><strong>Ranking Points:</strong> ${data.basicInfo.rankingPoints}</p>
-                        <p><strong>Badges:</strong> ${data.basicInfo.badgeCnt}</p>
-                        <p><strong>Likes:</strong> ${data.basicInfo.liked}</p>
-                    `;
-                    document.querySelector(".result-box").innerHTML = resultHTML;
-                } else {
-                    document.querySelector(".result-box").innerHTML = `<p style="color: red;">No data found!</p>`;
-                }
-            } catch (error) {
-                document.querySelector(".result-box").innerHTML = `<p style="color: red;">Error fetching data!</p>`;
-            }
+        async function fetchMap() {
+            const userId = document.getElementById('userId').value;
+            const response = await fetch(`https://api.example.com/freefire/map/${userId}`);
+            const data = await response.json();
+            document.getElementById('response').innerText = JSON.stringify(data, null, 2);
         }
     </script>
 </body>
