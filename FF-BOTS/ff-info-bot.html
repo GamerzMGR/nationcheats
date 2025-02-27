@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATION CHEATS - Free Fire Info Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            background: #ff5722;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e64a19;
+        }
+        .response-container {
+            margin-top: 20px;
+            text-align: left;
+            background: #222;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .icon-img {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>NATION CHEATS</h1>
+    <h2>FREE FIRE INFO BOT</h2>
+    <div class="container">
+        <input type="text" id="uid" placeholder="Enter UID" />
+        <select id="region" onchange="setRegion(this.value)">
+            <option value="">Select Region</option>
+            <option value="na">North America</option>
+            <option value="eu">Europe</option>
+            <option value="sa">South America</option>
+            <option value="asia">Asia</option>
+        </select>
+        <button onclick="redirectToURL()">Get Info</button>
+        <div id="response" class="response-container"></div>
+    </div>
+
+    <script>
+        let region = "";
+        function setRegion(newRegion) {
+            region = newRegion;
+        }
+
+        function redirectToURL() {
+            const uid = document.getElementById("uid").value;
+            const key = "83848373993037";
+            const url = `https://free-fire-data.vercel.app/api/data?region=${region}&uid=${uid}&key=${key}`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => displayData(data))
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        function unixToHumanTime(unixTime) {
+            const date = new Date(unixTime * 1000);
+            return date.toLocaleString();
+        }
+
+        function displayData(data) {
+            const responseContainer = document.getElementById("response");
+            responseContainer.innerHTML = `
+                <p>Account ID: ${data.basicInfo.accountId}</p>
+                <p>Nickname: ${data.basicInfo.nickname}</p>
+                <p>Level: ${data.basicInfo.level}</p>
+                <p>Rank: ${data.basicInfo.rank}</p>
+                <img class="icon-img" src="https://www.dl.cdn.freefireofficial.com/icons/${data.basicInfo.headPic}.png" alt="Icon">
+            `;
+        }
+    </script>
+</body>
+</html>
