@@ -3,105 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NATION CHEATS - Free Fire Info Bot</title>
+    <title>Nation Cheats - Free Fire Bot</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #121212;
+            background: #000;
+            background-image: radial-gradient(circle at top left, #1a1a1a, #000);
             color: white;
-            margin: 0;
+            text-align: center;
             padding: 20px;
+            animation: fadeIn 2s ease-in-out;
         }
-        h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .container {
-            max-width: 500px;
-            margin: auto;
-            background: #1e1e1e;
+            max-width: 600px;
+            background: rgba(20, 20, 20, 0.9);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+            margin: auto;
+            backdrop-filter: blur(10px);
+            animation: slideIn 1s forwards, glowEffect 2s infinite alternate;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes glowEffect {
+            from { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+            to { box-shadow: 0 0 40px rgba(0, 255, 255, 1); }
+        }
+        h2 {
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #00ff99, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glowText 1.5s infinite alternate;
         }
         input, select, button {
-            width: 100%;
-            padding: 10px;
             margin: 10px 0;
+            padding: 12px;
+            width: 90%;
             border: none;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        select, input {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid #00ffff;
         }
         button {
-            background: #ff5722;
+            background: linear-gradient(90deg, #00ff99, #00ffff);
             color: white;
             cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
         }
         button:hover {
-            background: #e64a19;
+            background: linear-gradient(90deg, #00ffff, #00ff99);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 1);
         }
-        .response-container {
-            margin-top: 20px;
+        #response {
             text-align: left;
-            background: #222;
-            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
             border-radius: 5px;
+            white-space: pre-wrap;
+            color: white;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 10px;
+            border: 1px solid #00ffff;
         }
-        .icon-img {
+        .title-image {
             width: 50px;
             height: 50px;
             margin: 5px;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
         }
     </style>
 </head>
 <body>
-    <h1>NATION CHEATS</h1>
-    <h2>FREE FIRE INFO BOT</h2>
     <div class="container">
-        <input type="text" id="uid" placeholder="Enter UID" />
-        <select id="region" onchange="setRegion(this.value)">
-            <option value="">Select Region</option>
-            <option value="na">North America</option>
-            <option value="eu">Europe</option>
-            <option value="sa">South America</option>
-            <option value="asia">Asia</option>
+        <h2>Nation Cheats - Free Fire Bot</h2>
+        <input type="text" id="userId" placeholder="Enter Free Fire User ID">
+        <select id="region">
+            <option value="ind">IND</option>
+            <option value="br">BR</option>
+            <option value="sg">SG</option>
+            <option value="ru">RU</option>
+            <option value="id">ID</option>
+            <option value="tw">TW</option>
+            <option value="na">NA</option>
+            <option value="vn">VN</option>
+            <option value="th">TH</option>
+            <option value="me">ME</option>
+            <option value="pk">PK</option>
+            <option value="cis">CIS</option>
+            <option value="bd">BD</option>
         </select>
-        <button onclick="redirectToURL()">Get Info</button>
-        <div id="response" class="response-container"></div>
+        <button onclick="fetchData()">Get Account Info</button>
+        <h3>Response:</h3>
+        <div id="response">Waiting for input...</div>
     </div>
 
     <script>
-        let region = "";
-        function setRegion(newRegion) {
-            region = newRegion;
-        }
+        const titleMap = {
+            "904090001": "Warrior",
+            "904090002": "Collector",
+            "904090003": "Adventurer",
+            "904090004": "Resurrector",
+            "904090005": "Eliminator",
+            "904090006": "Headhunter",
+            "904090007": "Boom Master",
+            "904090008": "Evo-lution",
+            "904090009": "Skyfarer",
+            "904090010": "Actor",
+            "904190028": "Dominator",
+            "904190029": "Uncrowned",
+            "904490051": "Versatile Hunter",
+            "904590052": "7th Anniv. Survivor",
+            "904590053": "FPP Elite",
+            "904790062": "Storm Conqueror"
+        };
 
-        function redirectToURL() {
-            const uid = document.getElementById("uid").value;
-            const key = "83848373993037";
-            const url = `https://free-fire-data.vercel.app/api/data?region=${region}&uid=${uid}&key=${key}`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => displayData(data))
-                .catch(error => console.error('Error fetching data:', error));
-        }
+        async function fetchData() {
+            const userId = document.getElementById('userId').value;
+            const region = document.getElementById('region').value;
+            const responseDiv = document.getElementById('response');
 
-        function unixToHumanTime(unixTime) {
-            const date = new Date(unixTime * 1000);
-            return date.toLocaleString();
-        }
+            if (!userId) {
+                responseDiv.innerHTML = "⚠️ Please enter a User ID.";
+                return;
+            }
 
-        function displayData(data) {
-            const responseContainer = document.getElementById("response");
-            responseContainer.innerHTML = `
-                <p>Account ID: ${data.basicInfo.accountId}</p>
-                <p>Nickname: ${data.basicInfo.nickname}</p>
-                <p>Level: ${data.basicInfo.level}</p>
-                <p>Rank: ${data.basicInfo.rank}</p>
-                <img class="icon-img" src="https://www.dl.cdn.freefireofficial.com/icons/${data.basicInfo.headPic}.png" alt="Icon">
-            `;
+            responseDiv.innerHTML = "⏳ Fetching data...";
+            try {
+                const res = await fetch(`https://free-fire-data.vercel.app/api/data?region=${region}&uid=${userId}&key=83848373993037`);
+                const data = await res.json();
+                
+                let formattedData = `
+                🎮 <b>Username:</b> ${data.username || "N/A"}<br>
+                🆔 <b>User ID:</b> ${data.uid || "N/A"}<br>
+                📍 <b>Region:</b> ${region.toUpperCase()}<br>
+                🏆 <b>Titles:</b> <br>
+                `;
+
+                if (data.titles && data.titles.length > 0) {
+                    data.titles.forEach(titleId => {
+                        let titleName = titleMap[titleId] || "Unknown Title";
+                        let titleImg = `<img class="title-image" src="https://www.dl.cdn.freefireofficial.com/icons/${titleId}.png" alt="${titleName}">`;
+                        formattedData += `✅ ${titleName} ${titleImg}<br>`;
+                    });
+                } else {
+                    formattedData += "No titles found.<br>";
+                }
+
+                responseDiv.innerHTML = formattedData;
+            } catch (error) {
+                responseDiv.innerHTML = "❌ Error fetching data!";
+            }
         }
     </script>
 </body>
